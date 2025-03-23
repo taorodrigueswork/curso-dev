@@ -1,5 +1,5 @@
 function Home() {
-  return <h1>Amigo, Eu preciso de um designer para ontem. Help!!!</h1>;
+  return <h1>"You are my person." </h1>;
 }
 
 export default Home;
