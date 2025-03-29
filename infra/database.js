@@ -6,11 +6,11 @@ import { Client } from "pg"; // to install this library, run the command: npm in
 async function query(queryObject) {
   // Creating a new PostgreSQL client instance with connection details
   const client = new Client({
-    user: "postgres", // Database username
-    host: "localhost", // Host where the database is running
-    port: 5432, // Default PostgreSQL port
-    database: "postgres", // Name of the database to connect to
-    password: "local_password", // Password for the database user
+    user: process.env.POSTGRES_USER, // Database username
+    host: process.env.POSTGRES_HOST, // Host where the database is running
+    port: process.env.POSTGRES_PORT, // Default PostgreSQL port
+    database: process.env.POSTGRES_DB, // Name of the database to connect to
+    password: process.env.POSTGRES_PASSWORD, // Password for the database user
   });
 
   // Connecting to the database
