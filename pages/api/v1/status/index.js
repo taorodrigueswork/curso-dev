@@ -12,18 +12,24 @@ async function status(request, response) {
   const maxConnections = maxConnectionsResult.rows[0].max_connections;
 
   // Query the number of active connections
+  const databaseName = process.env.POSTGRES_DB;
   const activeConnectionsResult = await database.query(
-    "SELECT COUNT(*) AS active_connections FROM pg_stat_activity;",
+    "SELECT COUNT(*)::int AS active_connections FROM pg_stat_activity WHERE datname = 'local_db';",
   );
-  const activeConnections = activeConnectionsResult.rows[0].active_connections;
+  const activeConnections = await database.query({
+    text: "SELECT count(*)::int FROM pg_stat_activity WHERE datname = $1;",
+    values: [databaseName],
+  });
+
+  const databaseOpenedConnectionsValue = activeConnections.rows[0].count;
 
   response.status(200).json({
     updated_at: updatedAt,
     dependencies: {
       database: {
         version: postgresVersion, // Include PostgreSQL version in the response
-        max_connections: maxConnections, // Include max connections in the response
-        active_connections: activeConnections, // Include active connections in the response. If I send a wrong query, one new database connection will be opened.
+        max_connections: parseInt(maxConnections), // Include max connections in the response
+        opened_connections: databaseOpenedConnectionsValue, // Include active connections in the response. If I send a wrong query, one new database connection will be opened.
       },
     },
   });
