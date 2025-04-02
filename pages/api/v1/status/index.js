@@ -1,3 +1,22 @@
+/**
+ * @swagger
+ * /example:
+ *   get:
+ *     summary: Example endpoint
+ *     description: Returns a simple message.
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Hello, world!"
+ */
+
 import database from "infra/database.js";
 
 async function status(request, response) {
