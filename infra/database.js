@@ -16,7 +16,7 @@ async function query(queryObject) {
 }
 
 async function getNewClient() {
-  console.log("Connecting to PostgreSQL database...", process.env);
+  //console.log("Connecting to PostgreSQL database...", process.env);
   const client = new Client({
     host: process.env.POSTGRES_HOST,
     port: process.env.POSTGRES_PORT,
