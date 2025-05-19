@@ -110,6 +110,9 @@ Configure your PostgreSQL and other environment variables in `.env` or `.env.dev
   `git branch`
 - **Deletar branch:**  
   `git branch -d wait-for-postgres`
+- **Amend:**  
+  `git commit --amend`
+  `git commit --amend --no-edit`
 
 ---
 
