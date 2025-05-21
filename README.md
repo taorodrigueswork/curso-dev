@@ -16,22 +16,25 @@ This project is a Node.js/Next.js application using PostgreSQL as the database. 
 - **concurrently**: Run multiple commands concurrently.
 - **prettier**: Code formatter.
 - **async-retry**: Automatically retry asynchronous operations (like API calls or database queries) if they fail.
+- **commitlint/cli**: https://commitlint.js.org/
+- **commitlint/config-conventional**: https://commitlint.js.org/
 
 ## Scripts
 
-| Script              | Description                                                                                           |
-| ------------------- | ----------------------------------------------------------------------------------------------------- |
-| `dev`               | Starts Docker services, waits for PostgreSQL, runs migrations, and starts Next.js in dev mode.        |
-| `services:up`       | Starts Docker services defined in `infra/compose.yaml`.                                               |
-| `services:down`     | Stops and removes Docker services.                                                                    |
-| `services:stop`     | Stops Docker services without removing them.                                                          |
-| `lint:check`        | Checks code formatting using Prettier.                                                                |
-| `lint:fix`          | Fixes code formatting using Prettier.                                                                 |
-| `test`              | Starts services, waits for PostgreSQL, runs Next.js and Jest tests concurrently, then stops services. |
-| `test:watch`        | Runs Jest in watch mode.                                                                              |
-| `migrations:create` | Creates a new database migration using node-pg-migrate.                                               |
-| `migrations:up`     | Applies all pending database migrations.                                                              |
-| `wait-for-postgres` | Waits for PostgreSQL to be ready before continuing.                                                   |
+| Script                | Description                                                                                           |
+| --------------------- | ----------------------------------------------------------------------------------------------------- |
+| `dev`                 | Starts Docker services, waits for PostgreSQL, runs migrations, and starts Next.js in dev mode.        |
+| `services:up`         | Starts Docker services defined in `infra/compose.yaml`.                                               |
+| `services:down`       | Stops and removes Docker services.                                                                    |
+| `services:stop`       | Stops Docker services without removing them.                                                          |
+| `lint:prettier:check` | Checks code formatting using Prettier.                                                                |
+| `lint:prettier:fix`   | Fixes code formatting using Prettier.                                                                 |
+| `lint:eslint:check`   |                                                                                                       |
+| `test`                | Starts services, waits for PostgreSQL, runs Next.js and Jest tests concurrently, then stops services. |
+| `test:watch`          | Runs Jest in watch mode.                                                                              |
+| `migrations:create`   | Creates a new database migration using node-pg-migrate.                                               |
+| `migrations:up`       | Applies all pending database migrations.                                                              |
+| `wait-for-postgres`   | Waits for PostgreSQL to be ready before continuing.                                                   |
 
 ## Usage
 
@@ -113,6 +116,17 @@ Configure your PostgreSQL and other environment variables in `.env` or `.env.dev
 - **Amend:**  
   `git commit --amend`
   `git commit --amend --no-edit`
+
+## Commit Types using :
+
+- **build:** Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+- **ci:** Changes to our CI configuration files and scripts (example scopes: Circle, BrowserStack, SauceLabs)
+- **docs:** Documentation only changes
+- **feat:** A new feature
+- **fix:** A bug fix
+- **perf:** A code change that improves performance
+- **refactor:** A code change that neither fixes a bug nor adds a feature
+- **test:** Adding missing tests or correcting existing tests
 
 ---
 
